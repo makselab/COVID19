@@ -42,6 +42,8 @@ class MapCore:
         return self.map
     
     def clear_map(self):
+        if self.map==None:
+            print('no map')
         map_loc = self.map.location
         map_zoom_start = self.map.options['zoom']
         tile = list(self.map.to_dict()['children'].keys())[0]
@@ -107,7 +109,7 @@ class MapCore:
         tile = list(self.map.to_dict()['children'].keys())[0]
         self.map = folium.Map(location=map_loc, zoom_start=map_zoom_start, max_zoom=17, min_zoom=7, tiles=tile)
         
-    def set_cores_on_map(self, start_core=5, weight_filter=0, geo_precision=9):
+    def set_cores_on_map(self, start_core=5, window=7, weight_filter=0, geo_precision=9):
         # decompose the k-shells
         cores = gt.kcore_decomposition(self.net)
         core_info = np.unique(cores.a)
@@ -131,7 +133,7 @@ class MapCore:
         cond1 = filtered_contacts['sourceId'].isin(kcore_ids)
         cond2 = filtered_contacts['targetId'].isin(kcore_ids)
         eff_table = filtered_contacts[cond1 & cond2]
-        place_info = map_utils.coreComponents_on_map(self.map, eff_table, self.net_date, self.id_to_layer, nodecolor, color_list, weight_filter=weight_filter, geo_precision=geo_precision)
+        place_info = map_utils.coreComponents_on_map(self.map, eff_table, self.net_date, self.id_to_layer, nodecolor, color_list, weight_filter=weight_filter, days_after=window, geo_precision=geo_precision)
         
         # generate structured csv table
         component_dict = place_info[0]
