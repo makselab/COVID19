@@ -1,7 +1,11 @@
 # Project COVID19 K-core tracker
 
 Source code for the paper titiled:
-Superspreading k-cores at the center of pandemic persiste
+
+**Superspreading k-cores at the center of pandemic persistence**
+
+Home URL: https://www.kcore-tracing.com/
+
 
 The code consist of two parts:
 
