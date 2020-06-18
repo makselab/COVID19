@@ -491,10 +491,10 @@ class COVID_19:
 			
 		
 		
-
-if __name__ == "__main__":
+## de-comment these lines if you want to run the code in back-ground###
+#if __name__ == "__main__":
     ##13/06/2020
-    #folder='/home/alex/Matteo_S/CoronaVirus/Test_library/'
+    #folder=current_path
     #trial=COVID_19.contact_network(folder,cores=6)
     #_=trial.remove_grid()
     #_=trial.filtering()
@@ -507,8 +507,8 @@ if __name__ == "__main__":
     #res=sir_analyses.run_SIR(g)
 
     ##14/06/2020
-    directory='/media/wangjiannan/raw_data_FL/raw_data/'
-    out_directory='/home/alex/Matteo_S/CoronaVirus/Test_library/'
-    mrsd=COVID_19.msrd(directory,out_directory)
+    #directory=path_raw_data
+    #out_directory=current_path
+    #mrsd=COVID_19.msrd(directory,out_directory)
     #_=mrsd.generate_pickle()
-    _=mrsd.daily_msrd()
+    #_=mrsd.daily_msrd()
